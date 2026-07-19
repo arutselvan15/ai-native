@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coffee Shop Comparison</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Coffee Shop Comparison</h1>
+      <p>
+        Loaded {{ review_count }} reviews → {{ shop_count }} shops ·
+        <span id="filtered-count">{{ shop_count }}</span> shown
+      </p>
+    </header>
+
+    <div class="layout">
+      <aside>
+        <h2>Filters</h2>
+        <label for="search">Search shop name</label>
+        <input id="search" type="text" autocomplete="off" />
+
+        <label>Neighborhood</label>
+        <div class="neighborhood-list" id="neighborhood-list"></div>
+
+        <label for="min-rating">Minimum overall rating (<span id="min-rating-val">1.0</span>)</label>
+        <input id="min-rating" type="range" min="1" max="5" step="0.1" value="1" />
+
+        <label><input id="wifi-required" type="checkbox" /> WiFi in ≥50% of reviews</label>
+        <label><input id="mobile-required" type="checkbox" /> Mobile ordering in ≥50% of reviews</label>
+
+        <button type="button" id="reset-btn">Reset filters</button>
+      </aside>
+
+      <main>
+        <section>
+          <h2>All shops</h2>
+          <p id="empty-msg" class="warning hidden"></p>
+          <table id="shops-table">
+            <thead>
+              <tr>
+                <th>Shop</th>
+                <th>Area</th>
+                <th>Overall</th>
+                <th>Coffee</th>
+                <th>Service</th>
+                <th>Atmosphere</th>
+                <th>Value</th>
+                <th>Price</th>
+                <th>Wait</th>
+                <th>Reviews</th>
+                <th>WiFi %</th>
+                <th>Mobile %</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Compare</h2>
+          <p id="compare-hint" class="hidden"></p>
+          <div id="compare-panel" class="compare-row">
+            <div>
+              <label for="shop-a">Shop A</label>
+              <select id="shop-a"></select>
+              <div id="metrics-a" class="metrics"></div>
+            </div>
+            <div>
+              <label for="shop-b">Shop B</label>
+              <select id="shop-b"></select>
+              <div id="metrics-b" class="metrics"></div>
+            </div>
+          </div>
+
+          <div id="charts">
+            <h2>Visualizations</h2>
+            <p><strong>Rating comparison (A vs B)</strong></p>
+            <div class="chart-box"><canvas id="compare-chart"></canvas></div>
+            <p><strong>Overall rating by shop (filtered)</strong></p>
+            <div class="chart-box"><canvas id="rating-chart"></canvas></div>
+            <p><strong>Price vs wait time</strong></p>
+            <div class="chart-box"><canvas id="scatter-chart"></canvas></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      window.ALL_SHOPS = {{ shops_json|safe }};
+      window.ALL_NEIGHBORHOODS = {{ neighborhoods|safe }};
+    </script>
+    <script>
+      const list = document.getElementById("neighborhood-list");
+      for (const nb of window.ALL_NEIGHBORHOODS) {
+        const id = "nb-" + nb.replace(/\W/g, "_");
+        list.insertAdjacentHTML(
+          "beforeend",
+          `<label><input class="nb-checkbox" type="checkbox" value="${nb}" id="${id}" checked /> ${nb}</label>`,
+        );
+      }
+      const slider = document.getElementById("min-rating");
+      const sliderVal = document.getElementById("min-rating-val");
+      slider.addEventListener("input", () => {
+        sliderVal.textContent = Number(slider.value).toFixed(1);
+      });
+    </script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

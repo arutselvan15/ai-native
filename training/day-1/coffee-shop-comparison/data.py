@@ -9,29 +9,6 @@ import pandas as pd
 
 CSV_PATH = Path(__file__).resolve().parent / "coffee_shop_reviews.csv"
 
-RATING_COLUMNS = (
-    "overall_rating",
-    "coffee_quality",
-    "service_quality",
-    "atmosphere",
-    "value_score",
-)
-
-TABLE_COLUMNS = (
-    "shop_name",
-    "neighborhood",
-    "overall_rating",
-    "coffee_quality",
-    "service_quality",
-    "atmosphere",
-    "value_score",
-    "avg_price",
-    "wait_time_minutes",
-    "review_count",
-    "wifi_pct",
-    "mobile_pct",
-)
-
 
 @dataclass(frozen=True)
 class ShopFilters:
@@ -99,15 +76,3 @@ def apply_filters(shops: pd.DataFrame, filters: ShopFilters) -> pd.DataFrame:
         result = result[result["mobile_pct"] >= 50.0]
 
     return result.reset_index(drop=True)
-
-
-def compare_ratings_frame(
-    shop_a: pd.Series, shop_b: pd.Series, metric_labels: tuple[str, ...]
-) -> pd.DataFrame:
-    return pd.DataFrame(
-        {
-            shop_a["shop_name"]: [shop_a[col] for col in RATING_COLUMNS],
-            shop_b["shop_name"]: [shop_b[col] for col in RATING_COLUMNS],
-        },
-        index=list(metric_labels),
-    )

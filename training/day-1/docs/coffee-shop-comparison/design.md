@@ -70,12 +70,11 @@ flowchart TD
 | Decision | Choice | Alternatives considered | Rationale |
 | --- | --- | --- | --- |
 | Language | Python 3.10+ | Keep vanilla JS only | User preference; pandas fits aggregation |
-| UI framework | Streamlit | Flask + Jinja + Chart.js, FastAPI + SPA | Fast Gold UX: filters, charts, layout with minimal boilerplate |
+| UI framework | Flask + Jinja + client JS (Chart.js) | Streamlit | Dynamic compare `<select>` options + Streamlit widget session state caused repeated UI crashes |
 | CSV parsing | `pandas.read_csv` | Manual parser | Robust quoting; lab recommends pandas for Option 1 |
 | Aggregation | Group by `shop_name`, mean numerics, count rows, amenity % | Raw review table | Matches compare-shops intent; 12 shops from 1061 rows |
-| Caching | `@st.cache_data` on load+aggregate | Reload every interaction | Snappy reruns on filter changes |
-| Charts | Streamlit native (`st.bar_chart`, `st.scatter_chart`) on small tidy frames | Plotly only | Fewer deps; three distinct chart types still clear |
-| Primary run | `streamlit run app.py` | Extend `serve.sh` | Streamlit owns HTTP port; static server misleading for Python app |
+| Data to browser | Embed aggregated JSON once at page load | Streamlit rerun per widget | Filters/compare/charts run client-side; no server session |
+| Primary run | `python app.py` / `./run.sh` on :8501 | `streamlit run` | Simple local demo |
 | Styling | Streamlit `set_page_config` + custom CSS block in `app.py` | External theme repo | “Clean UI” without a front-end build |
 
 ## Data model

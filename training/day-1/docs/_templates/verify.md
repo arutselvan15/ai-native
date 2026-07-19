@@ -19,6 +19,8 @@
 
 - [ ] …
 
+**Sign-off rule:** Do not mark verify complete while any manual item above remains unchecked unless marked N/A with reason (see Phase 4 in [`../AGENTS.md`](../AGENTS.md)).
+
 ## Sign-off
 
 - [ ] Verify complete
