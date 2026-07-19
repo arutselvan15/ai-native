@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coffee Shop Comparison</title>
+  <style>
+    :root {
+      --bg: #f6f3ef;
+      --card: #fff;
+      --text: #2c2419;
+      --muted: #6b5f52;
+      --accent: #6f4e37;
+      --accent-light: #c4a882;
+      --border: #e5ddd3;
+      --good: #2d6a4f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(135deg, #4a3728, var(--accent));
+      color: #fff;
+      padding: 1.25rem 1.5rem;
+    }
+    header h1 { margin: 0 0 0.25rem; font-size: 1.5rem; }
+    header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+    main { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1.5rem 2rem; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(44, 36, 25, 0.06);
+    }
+    h2 { margin: 0 0 0.75rem; font-size: 1.1rem; color: var(--accent); }
+    .status { color: var(--muted); font-size: 0.9rem; }
+    .status.error { color: #b42318; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.5rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    th { background: #faf7f4; font-weight: 600; }
+    tr:hover td { background: #faf7f4; }
+    .compare-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+    }
+    label { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; }
+    select {
+      min-width: 200px;
+      padding: 0.45rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 700px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .shop-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      background: #faf7f4;
+    }
+    .shop-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+    .shop-card .meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 0.2rem 0;
+    }
+    .metric-row span:last-child { font-weight: 600; }
+    .chart-wrap { margin-top: 1rem; }
+    .chart-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 48px;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      font-size: 0.8rem;
+    }
+    .bar-track {
+      height: 10px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+    }
+    .bar-a { background: var(--accent); height: 100%; }
+    .bar-b { background: var(--accent-light); height: 100%; }
+    .legend {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+    }
+    .legend span::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .legend .a::before { background: var(--accent); }
+    .legend .b::before { background: var(--accent-light); }
+    .file-fallback {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.85rem;
+    }
+    input[type="file"] { font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Coffee Shop Comparison</h1>
+    <p>Day 1 lab — compare shops from aggregated review data</p>
+  </header>
+  <main>
+    <section>
+      <h2>Data</h2>
+      <p id="status" class="status">Loading coffee_shop_reviews.csv…</p>
+      <div id="file-fallback" class="file-fallback" hidden>
+        <p>If the CSV did not load (e.g. opened as <code>file://</code>), pick the file manually:</p>
+        <input type="file" id="csv-file" accept=".csv,text/csv" />
+      </div>
+    </section>
+
+    <section id="shops-section" hidden>
+      <h2>All shops</h2>
+      <p class="status"><span id="shop-count">0</span> shops · metrics averaged across reviews</p>
+      <div style="overflow-x: auto;">
+        <table id="shops-table">
+          <thead>
+            <tr>
+              <th>Shop</th>
+              <th>Neighborhood</th>
+              <th>Overall</th>
+              <th>Coffee</th>
+              <th>Service</th>
+              <th>Atmosphere</th>
+              <th>Value</th>
+              <th>Avg price ($)</th>
+              <th>Wait (min)</th>
+              <th>Reviews</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="compare-section" hidden>
+      <h2>Compare two shops</h2>
+      <div class="compare-controls">
+        <label>
+          Shop A
+          <select id="shop-a"></select>
+        </label>
+        <label>
+          Shop B
+          <select id="shop-b"></select>
+        </label>
+      </div>
+      <div class="compare-grid" id="compare-cards"></div>
+      <div class="chart-wrap">
+        <div class="chart-title">Rating comparison (0–5)</div>
+        <div class="legend">
+          <span class="a" id="legend-a">Shop A</span>
+          <span class="b" id="legend-b">Shop B</span>
+        </div>
+        <div id="rating-chart"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const CSV_PATH = "coffee_shop_reviews.csv";
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = "";
+      let inQuotes = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        const next = text[i + 1];
+        if (inQuotes) {
+          if (c === '"' && next === '"') {
+            field += '"';
+            i++;
+          } else if (c === '"') {
+            inQuotes = false;
+          } else {
+            field += c;
+          }
+        } else if (c === '"') {
+          inQuotes = true;
+        } else if (c === ",") {
+          row.push(field);
+          field = "";
+        } else if (c === "\n" || (c === "\r" && next === "\n")) {
+          row.push(field);
+          if (row.length > 1 || row[0] !== "") rows.push(row);
+          row = [];
+          field = "";
+          if (c === "\r") i++;
+        } else {
+          field += c;
+        }
+      }
+      if (field.length || row.length) {
+        row.push(field);
+        rows.push(row);
+      }
+      const headers = rows.shift();
+      return rows.map((cells) => {
+        const o = {};
+        headers.forEach((h, idx) => {
+          o[h.trim()] = (cells[idx] ?? "").trim();
+        });
+        return o;
+      });
+    }
+
+    function toNum(v) {
+      const n = parseFloat(v);
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function aggregateShops(reviews) {
+      const byName = new Map();
+      for (const r of reviews) {
+        const name = r.shop_name;
+        if (!name) continue;
+        if (!byName.has(name)) {
+          byName.set(name, {
+            shop_name: name,
+            address: r.address,
+            city: r.city,
+            neighborhood: r.neighborhood,
+            sums: {
+              overall_rating: 0,
+              coffee_quality: 0,
+              service_quality: 0,
+              atmosphere: 0,
+              value_score: 0,
+              avg_price: 0,
+              wait_time_minutes: 0,
+            },
+            counts: {
+              overall_rating: 0,
+              coffee_quality: 0,
+              service_quality: 0,
+              atmosphere: 0,
+              value_score: 0,
+              avg_price: 0,
+              wait_time_minutes: 0,
+            },
+            review_count: 0,
+            wifi_yes: 0,
+            mobile_yes: 0,
+          });
+        }
+        const shop = byName.get(name);
+        shop.review_count++;
+        if (r.has_wifi === "True") shop.wifi_yes++;
+        if (r.mobile_ordering === "True") shop.mobile_yes++;
+        for (const key of Object.keys(shop.sums)) {
+          const n = toNum(r[key]);
+          if (n !== null) {
+            shop.sums[key] += n;
+            shop.counts[key]++;
+          }
+        }
+      }
+      return [...byName.values()]
+        .map((s) => {
+          const avg = (key) => {
+            const c = s.counts[key];
+            return c ? s.sums[key] / c : null;
+          };
+          return {
+            shop_name: s.shop_name,
+            address: s.address,
+            neighborhood: s.neighborhood,
+            overall_rating: avg("overall_rating"),
+            coffee_quality: avg("coffee_quality"),
+            service_quality: avg("service_quality"),
+            atmosphere: avg("atmosphere"),
+            value_score: avg("value_score"),
+            avg_price: avg("avg_price"),
+            wait_time_minutes: avg("wait_time_minutes"),
+            review_count: s.review_count,
+            wifi_pct: s.review_count ? (100 * s.wifi_yes) / s.review_count : 0,
+            mobile_pct: s.review_count ? (100 * s.mobile_yes) / s.review_count : 0,
+          };
+        })
+        .sort((a, b) => a.shop_name.localeCompare(b.shop_name));
+    }
+
+    function fmt(n, digits = 1) {
+      return n == null ? "—" : n.toFixed(digits);
+    }
+
+    let shops = [];
+
+    function renderTable() {
+      const tbody = document.querySelector("#shops-table tbody");
+      tbody.innerHTML = "";
+      for (const s of shops) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><strong>${escapeHtml(s.shop_name)}</strong></td>
+          <td>${escapeHtml(s.neighborhood)}</td>
+          <td>${fmt(s.overall_rating)}</td>
+          <td>${fmt(s.coffee_quality)}</td>
+          <td>${fmt(s.service_quality)}</td>
+          <td>${fmt(s.atmosphere)}</td>
+          <td>${fmt(s.value_score)}</td>
+          <td>${fmt(s.avg_price, 2)}</td>
+          <td>${fmt(s.wait_time_minutes, 0)}</td>
+          <td>${s.review_count}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+      document.getElementById("shop-count").textContent = String(shops.length);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function fillSelects() {
+      const a = document.getElementById("shop-a");
+      const b = document.getElementById("shop-b");
+      a.innerHTML = "";
+      b.innerHTML = "";
+      for (const s of shops) {
+        const opt = `<option value="${escapeHtml(s.shop_name)}">${escapeHtml(s.shop_name)}</option>`;
+        a.insertAdjacentHTML("beforeend", opt);
+        b.insertAdjacentHTML("beforeend", opt);
+      }
+      if (shops.length >= 2) {
+        b.selectedIndex = 1;
+      }
+      a.onchange = renderCompare;
+      b.onchange = renderCompare;
+      renderCompare();
+    }
+
+    function shopCard(s, label) {
+      return `
+        <div class="shop-card">
+          <h3>${escapeHtml(s.shop_name)}</h3>
+          <div class="meta">${escapeHtml(s.neighborhood)} · ${escapeHtml(s.address)}</div>
+          <div class="metric-row"><span>Overall rating</span><span>${fmt(s.overall_rating)}</span></div>
+          <div class="metric-row"><span>Coffee quality</span><span>${fmt(s.coffee_quality)}</span></div>
+          <div class="metric-row"><span>Service</span><span>${fmt(s.service_quality)}</span></div>
+          <div class="metric-row"><span>Atmosphere</span><span>${fmt(s.atmosphere)}</span></div>
+          <div class="metric-row"><span>Value</span><span>${fmt(s.value_score)}</span></div>
+          <div class="metric-row"><span>Avg drink price</span><span>$${fmt(s.avg_price, 2)}</span></div>
+          <div class="metric-row"><span>Avg wait</span><span>${fmt(s.wait_time_minutes, 0)} min</span></div>
+          <div class="metric-row"><span>WiFi (reviews)</span><span>${fmt(s.wifi_pct, 0)}%</span></div>
+          <div class="metric-row"><span>Mobile order</span><span>${fmt(s.mobile_pct, 0)}%</span></div>
+          <div class="metric-row"><span>Review count</span><span>${s.review_count}</span></div>
+        </div>
+      `;
+    }
+
+    function renderCompare() {
+      const nameA = document.getElementById("shop-a").value;
+      const nameB = document.getElementById("shop-b").value;
+      const sa = shops.find((s) => s.shop_name === nameA);
+      const sb = shops.find((s) => s.shop_name === nameB);
+      if (!sa || !sb) return;
+
+      document.getElementById("legend-a").textContent = sa.shop_name;
+      document.getElementById("legend-b").textContent = sb.shop_name;
+      document.getElementById("compare-cards").innerHTML =
+        shopCard(sa, "A") + shopCard(sb, "B");
+
+      const metrics = [
+        ["Overall", "overall_rating"],
+        ["Coffee", "coffee_quality"],
+        ["Service", "service_quality"],
+        ["Atmosphere", "atmosphere"],
+        ["Value", "value_score"],
+      ];
+      const chart = document.getElementById("rating-chart");
+      chart.innerHTML = "";
+      const maxScale = 5;
+      for (const [label, key] of metrics) {
+        const va = sa[key] ?? 0;
+        const vb = sb[key] ?? 0;
+        const row = document.createElement("div");
+        row.className = "bar-row";
+        row.innerHTML = `
+          <span>${label}</span>
+          <div class="bar-track">
+            <div class="bar-a" style="width:${(va / maxScale) * 50}%"></div>
+            <div class="bar-b" style="width:${(vb / maxScale) * 50}%"></div>
+          </div>
+          <span>${fmt(va)} / ${fmt(vb)}</span>
+        `;
+        chart.appendChild(row);
+      }
+    }
+
+    function onDataLoaded(text) {
+      const reviews = parseCSV(text);
+      shops = aggregateShops(reviews);
+      if (shops.length < 5) {
+        throw new Error("Expected at least 5 shops after aggregation.");
+      }
+      document.getElementById("status").textContent =
+        `Loaded ${reviews.length} reviews → ${shops.length} shops.`;
+      document.getElementById("shops-section").hidden = false;
+      document.getElementById("compare-section").hidden = false;
+      renderTable();
+      fillSelects();
+    }
+
+    function onError(msg) {
+      const el = document.getElementById("status");
+      el.textContent = msg;
+      el.classList.add("error");
+      document.getElementById("file-fallback").hidden = false;
+    }
+
+    async function loadFromUrl() {
+      const res = await fetch(CSV_PATH);
+      if (!res.ok) throw new Error(`Could not fetch ${CSV_PATH} (${res.status}).`);
+      return res.text();
+    }
+
+    document.getElementById("csv-file").addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          document.getElementById("status").classList.remove("error");
+          onDataLoaded(reader.result);
+        } catch (err) {
+          onError(err.message || String(err));
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    loadFromUrl()
+      .then(onDataLoaded)
+      .catch(() => {
+        onError(
+          "Auto-load failed. Run a local server from this folder (see below) or choose the CSV file."
+        );
+      });
+  </script>
+</body>
+</html>
