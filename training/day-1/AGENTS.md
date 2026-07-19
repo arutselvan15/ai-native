@@ -32,7 +32,7 @@ Exit gate: status **agreed** with checkbox and date. No `design.md` until then.
 
 ### Phase 2 — Design
 
-Write `docs/<exercise-slug>/design.md`, linked from `plan.md`. No edits to `index.html`, `serve.sh`, or other product files until design status is **approved**.
+Write `docs/<exercise-slug>/design.md`, linked from `plan.md`. No edits to `app.py`, `data.py`, or other product files until design status is **approved**.
 
 ### Phase 3 — Implement
 
@@ -61,23 +61,24 @@ Between gates, ask explicitly (e.g. “Approve Plan to move to Design?”).
 | --- | --- |
 | `docs/README.md` | Doc index for this day |
 | `docs/coffee-shop-comparison/` | Plan, design, verify for the lab |
-| `coffee-shop-comparison/index.html` | App UI and logic |
-| `coffee-shop-comparison/serve.sh` | Local static server |
+| `coffee-shop-comparison/app.py` | Streamlit UI |
+| `coffee-shop-comparison/data.py` | CSV load, aggregate, filters |
+| `coffee-shop-comparison/run.sh` | Start Streamlit |
 | `coffee-shop-comparison/coffee_shop_reviews.csv` | Data |
 
 ## Run and verify
 
 ```bash
 cd coffee-shop-comparison
-./serve.sh
-# http://127.0.0.1:8080/index.html
+./run.sh
+# or: streamlit run app.py
 ```
 
 Do not invent commands; use the lab README and existing scripts.
 
 ## Code quality
 
-- Simplicity first; minimal diff; match existing style in `coffee-shop-comparison/`.
+- Simplicity first; minimal diff; match existing style in `coffee-shop-comparison/` (`app.py`, `data.py`).
 - Document tradeoffs in `design.md`.
 
 ## Safety
