@@ -1,0 +1,38 @@
+training/day-1/AGENTS.md
+  s_8cdec48fc02fe0::t_1d3186fbdadc67 14-15
+openspec/changes/consolidate-openspec-repo-root/proposal.md
+  s_8cdec48fc02fe0::t_f1bbd374b31f26 1-28
+openspec/changes/consolidate-openspec-repo-root/specs/repo-openspec-layout/spec.md
+  s_8cdec48fc02fe0::t_9a889159403c1f 1-47
+openspec/changes/consolidate-openspec-repo-root/.openspec.yaml
+  s_8cdec48fc02fe0::t_d11900b359f84f 1-2
+openspec/config.yaml
+  s_8cdec48fc02fe0::t_120906f3480aa2 3-8
+  s_8cdec48fc02fe0::t_f36f80c326ce2f 1-2
+  s_8cdec48fc02fe0::t_8508cd628e958d 9-11
+openspec/changes/consolidate-openspec-repo-root/design.md
+  s_8cdec48fc02fe0::t_dbdd78fe3f8368 1-65
+openspec/changes/consolidate-openspec-repo-root/tasks.md
+  s_8cdec48fc02fe0::t_e596f7b879591b 3-7,11-13,17,21-23
+  s_8cdec48fc02fe0::t_6aa855b37a9467 1-2,8-10,14-16,18-20
+training/AGENTS.md
+  s_8cdec48fc02fe0::t_5f9f1467d59458 23-29
+training/day-2/spec-writing/README.md
+  s_8cdec48fc02fe0::t_2c36d0033eff89 85-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "0ab8e96cd2c920a0684ecfbbe1dd067295a8ab14",
+  "prompts": {},
+  "sessions": {
+    "s_8cdec48fc02fe0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b4985ce6-d79d-4cb8-94fc-b97ce4159094",
+        "model": "default"
+      },
+      "human_author": "arutselvan15 <arut.selvan15@gmail.com>"
+    }
+  }
+}
