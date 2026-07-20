@@ -1,0 +1,56 @@
+tools/repo_scanner/__main__.py
+  s_1f530e6ca69a86::t_fdd517582a3980 1-4
+tools/repo_scanner/signals/__init__.py
+  s_1f530e6ca69a86::t_92de279c76f480 1
+tools/repo_scanner/config.py
+  s_1f530e6ca69a86::t_b4af6ee7e096ab 1-21
+tools/repo_scanner/README.md
+  s_1f530e6ca69a86::t_ab45bb8865b811 1-37
+tools/repo_scanner/signals/large_files.py
+  s_1f530e6ca69a86::t_e4af171a412b2f 1-24
+tools/repo_scanner/report.py
+  s_1f530e6ca69a86::t_8e80b3068d724e 1-100
+tools/repo_scanner/__init__.py
+  s_1f530e6ca69a86::t_a6cc3487d783ce 1-3
+tools/repo_scanner/scan.py
+  s_1f530e6ca69a86::t_e4e174b908fa8a 1-24
+README.md
+  s_1f530e6ca69a86::t_1ce9a33a3d88b3 16-17
+tools/__init__.py
+  s_1f530e6ca69a86::t_57f9a5ceaa171b 1
+tools/repo_scanner/models.py
+  s_1f530e6ca69a86::t_2f85e1f0da4680 1-35
+tools/repo_scanner/signals/python_complexity.py
+  s_1f530e6ca69a86::t_9b615425769959 1-61,65-66,76-91
+  s_1f530e6ca69a86::t_a986e9c6aee142 62-64,67-75
+tools/repo_scanner/signals/layout_policy.py
+  s_1f530e6ca69a86::t_4467b37dd514c4 1-12
+tools/repo_scanner/walk.py
+  s_1f530e6ca69a86::t_da824aa8605370 1-37
+tools/repo_scanner/cli.py
+  s_1f530e6ca69a86::t_42dbb78b040e2e 1-46
+openspec/specs/repo-scanner/spec.md
+  s_1f530e6ca69a86::t_1e28822f270343 1-94
+tests/repo_scanner/test_scan.py
+  s_1f530e6ca69a86::t_2e3ca90f20e530 1-87
+openspec/changes/archive/2026-07-20-repo-scanner-mvp/.openspec.yaml
+  s_1f530e6ca69a86::t_8ec535a054e99e 1-2
+openspec/changes/archive/2026-07-20-repo-scanner-mvp/tasks.md
+  s_1f530e6ca69a86::t_ee6e0f6e69d380 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d386d29bb4adda67bf9fb8033a4f990cb759dfb2",
+  "prompts": {},
+  "sessions": {
+    "s_1f530e6ca69a86": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d123747e-5cf8-49d4-b91c-c881f249461a",
+        "model": "default"
+      },
+      "human_author": "arutselvan15 <arut.selvan15@gmail.com>"
+    }
+  }
+}
