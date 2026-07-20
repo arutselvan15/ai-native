@@ -1,0 +1,61 @@
+docs/README.md
+  s_1f530e6ca69a86::t_d064e9b72bc0ac 1,3,9-11,17,21-25
+openspec/changes/consolidate-openspec-repo-root/specs/repo-openspec-layout/spec.md
+  s_1f530e6ca69a86::t_5f7ec293db2ca5 28,33
+training/day-1/README.md
+  s_1f530e6ca69a86::t_551cab30a86733 31,34-36,38-42
+  s_1f530e6ca69a86::t_470c4fa59d6d4e 10
+  s_1f530e6ca69a86::t_1d4e3f6bbd6b15 16-17,20-22
+docs/coffee-shop-comparison/plan.md
+  s_1f530e6ca69a86::t_104f79bfb3f848 26
+  s_1f530e6ca69a86::t_94b70a75ad37b7 88
+  s_1f530e6ca69a86::t_a7ca38899e8d10 64
+  s_1f530e6ca69a86::t_c172d3212bc47a 72
+README.md
+  s_1f530e6ca69a86::t_8261786fda783b 15
+openspec/changes/root-level-venv-and-docs/tasks.md
+  s_1f530e6ca69a86::t_26eed97e6d7c03 3-6,10-13,17-19,23-26
+openspec/changes/consolidate-openspec-repo-root/design.md
+  s_1f530e6ca69a86::t_f5abaa11fdb96d 5
+training/AGENTS.md
+  s_1f530e6ca69a86::t_a47648869545f6 27
+  s_1f530e6ca69a86::t_a6bccfaf61aadc 7
+  s_1f530e6ca69a86::t_cfc5fad5d95a8d 18
+training/day-1/coffee-shop-comparison/README.md
+  s_1f530e6ca69a86::t_4d0c744c142ec8 7,11-12,14,18,36
+  s_1f530e6ca69a86::t_75143187aa7eae 37
+docs/_templates/verify.md
+  s_1f530e6ca69a86::t_fc4fe5a3b635ce 9
+docs/coffee-shop-comparison/verify.md
+  s_1f530e6ca69a86::t_1ae6421fd14d9a 16-19
+openspec/config.yaml
+  s_1f530e6ca69a86::t_ba581d6ae1853d 6-7
+docs/coffee-shop-comparison/design.md
+  s_1f530e6ca69a86::t_7ef42bfdeaf533 26-30
+training/day-1/AGENTS.md
+  s_1f530e6ca69a86::t_be95a21519a4c2 3
+  s_1f530e6ca69a86::t_d555da3016b623 75
+  s_1f530e6ca69a86::t_804ad9e51486c9 129
+  s_1f530e6ca69a86::t_ee19f1bc1b9916 20,25
+  s_1f530e6ca69a86::t_d1baa2005683e5 82
+  s_1f530e6ca69a86::t_4e0cb26f94266e 11
+  s_1f530e6ca69a86::t_4024da782918ca 93
+  s_1f530e6ca69a86::t_a5626f38b538fb 122,124-125
+  s_1f530e6ca69a86::t_fc4c3248edb406 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "aec1e45887e0b06b77c1fbf5a005da313d34e54f",
+  "prompts": {},
+  "sessions": {
+    "s_1f530e6ca69a86": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d123747e-5cf8-49d4-b91c-c881f249461a",
+        "model": "default"
+      },
+      "human_author": "arutselvan15 <arut.selvan15@gmail.com>"
+    }
+  }
+}
