@@ -1,0 +1,25 @@
+openspec/changes/root-level-venv-and-docs/tasks.md
+  s_1f530e6ca69a86::t_28d0d48879c1d4 1-26
+openspec/changes/root-level-venv-and-docs/specs/repo-dev-layout/spec.md
+  s_1f530e6ca69a86::t_53d10fb4c61a48 1-52
+openspec/changes/root-level-venv-and-docs/design.md
+  s_1f530e6ca69a86::t_d60e76e93e8a0f 1-84
+openspec/changes/root-level-venv-and-docs/proposal.md
+  s_1f530e6ca69a86::t_d71edc6d919591 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "de88eb2847736bf25f149f38c93548273c6a52c6",
+  "prompts": {},
+  "sessions": {
+    "s_1f530e6ca69a86": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d123747e-5cf8-49d4-b91c-c881f249461a",
+        "model": "default"
+      },
+      "human_author": "arutselvan15 <arut.selvan15@gmail.com>"
+    }
+  }
+}
