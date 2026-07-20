@@ -6,7 +6,7 @@
 ## Commands run
 
 ```bash
-# from day-1/coffee-shop-comparison or relevant path
+# from repository root (venv active), then cd training/day-1/coffee-shop-comparison or relevant path
 ```
 
 ## Acceptance criteria results

@@ -13,9 +13,10 @@ Streamlit reruns the whole script on every widget change. Compare dropdowns whos
 ### Data layer
 
 ```bash
-cd training/day-1/coffee-shop-comparison
+cd /path/to/ai-native
 source .venv/bin/activate
 pip install -r requirements.txt
+cd training/day-1/coffee-shop-comparison
 python -c "
 import data
 r = data.load_reviews()

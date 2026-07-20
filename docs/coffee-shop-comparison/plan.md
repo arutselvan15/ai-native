@@ -23,7 +23,7 @@ Rebuild the Day 1 coffee shop lab as a **Gold-tier** experience: interactive bro
 - [x] CSV loads without errors (~1,061 review rows → 12 aggregated shops)
 - [x] At least five shops visible with at least five metrics each (overall rating, coffee quality, service, atmosphere, value, price, wait, amenities signals)
 - [x] Compare at least two shops side-by-side with clear metric contrast
-- [x] Runs locally with documented commands (venv + `requirements.txt`)
+- [x] Runs locally with documented commands (repo-root `.venv` + root `requirements.txt`)
 
 ### Gold
 
@@ -61,7 +61,7 @@ Rebuild the Day 1 coffee shop lab as a **Gold-tier** experience: interactive bro
 ## Constraints
 
 - **Stack:** Python first; pandas for load/aggregate; Streamlit for UI (lab “Option 1: Python + Web Framework”).
-- **Dependencies:** Pin in `requirements.txt`; prefer stdlib + pandas + streamlit only unless design adds one small chart library with justification.
+- **Dependencies:** Pin in repository-root `requirements.txt`; prefer stdlib + pandas + flask for the current stack unless design adds one small chart library with justification.
 - **Security:** Synthetic public data; no secrets; read-only CSV.
 - **Scope boundary:** Changes under `training/day-1/` only unless user asks otherwise.
 
@@ -69,7 +69,7 @@ Rebuild the Day 1 coffee shop lab as a **Gold-tier** experience: interactive bro
 
 **In scope**
 
-- Python package layout under `coffee-shop-comparison/` (e.g. `app.py`, `data.py`, `requirements.txt`, optional `run.sh`)
+- Python package layout under `coffee-shop-comparison/` (e.g. `app.py`, `data.py`, optional `run.sh`); dependencies at repo root
 - Load and cache aggregated shop dataframe
 - Search + filters driving table and charts
 - Shop A / Shop B compare panel with linked charts
@@ -85,7 +85,7 @@ Rebuild the Day 1 coffee shop lab as a **Gold-tier** experience: interactive bro
 
 | Item | Notes | Mitigation |
 | --- | --- | --- |
-| Streamlit not installed | First-run friction | Document venv + `pip install -r requirements.txt` |
+| Missing deps | First-run friction | Document repo-root venv + `pip install -r requirements.txt` |
 | Chart count vs time | Gold needs 3+ viz | Design lists exact charts; reuse same filtered dataframe |
 | Filter empty set | UX confusion | Empty state message + reset filters control |
 | Duplicate stack (HTML + Python) | Confusing entry point | Design names Streamlit as sole primary; README updated in Implement |

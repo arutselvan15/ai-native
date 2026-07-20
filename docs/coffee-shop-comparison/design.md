@@ -23,11 +23,11 @@ Keep aggregation rules aligned with the existing Silver HTML app so behavior sta
 | --- | --- | --- |
 | Entry UI | `app.py` | Streamlit layout, widgets, charts, page config |
 | Data layer | `data.py` | `load_reviews()`, `aggregate_shops(df)`, filter helpers |
-| Dependencies | `requirements.txt` | `pandas`, `streamlit` (pinned versions) |
-| Run helper | `run.sh` | Optional: activate venv + `streamlit run app.py` |
+| Dependencies | repo root `requirements.txt` | `pandas`, `flask` (pinned versions) |
+| Run helper | `run.sh` | Start Flask after activating repo-root `.venv` |
 | Data | `coffee_shop_reviews.csv` | Source of truth (unchanged) |
 | Legacy | — | Removed; Streamlit is the only app entry |
-| Docs | `../docs/coffee-shop-comparison/*.md` | Plan, design, verify |
+| Docs | `docs/coffee-shop-comparison/*.md` | Plan, design, verify |
 
 Suggested layout:
 

@@ -1,6 +1,6 @@
 # AGENTS.md — Day 1
 
-Instructions for AI assistants working **inside `training/day-1/`**. Treat this folder as a standalone project. Training index: [`../AGENTS.md`](../AGENTS.md). **Shape the approach in `docs/` before writing code.**
+Instructions for AI assistants working **inside `training/day-1/`**. Treat this folder as a standalone project. Training index: [`../AGENTS.md`](../AGENTS.md). **Shape the approach in repository-root [`docs/`](../../docs/README.md) before writing code.**
 
 ## Project purpose
 
@@ -8,21 +8,21 @@ Day 1 warm-up: build a web app that loads `coffee_shop_reviews.csv` and compares
 
 ## Scope boundary
 
-- Default workspace: **`training/day-1/`** only (code under `coffee-shop-comparison/`, artifacts under `docs/`).
+- Default workspace: **`training/day-1/`** for lab code (`coffee-shop-comparison/`). Phased artifacts live at **repository root** under `docs/` (not under `day-1/`).
 - Do not change other days under `training/` or repo root files unless the user explicitly asks.
 
-**OpenSpec:** Day 1 does not use OpenSpec changes for this lab. Planning artifacts stay under `docs/`. Repo-wide OpenSpec (Day 2+ capstone) lives only at the **repository root** `openspec/`—there is no OpenSpec root under `coffee-shop-comparison/`.
+**OpenSpec:** Day 1 does not use OpenSpec changes for this lab. Planning artifacts stay under repository-root `docs/`. Repo-wide OpenSpec (Day 2+ capstone) lives only at the **repository root** `openspec/`—there is no OpenSpec root under `coffee-shop-comparison/`.
 
 ## Non‑negotiable: phased workflow
 
 | Phase | Name | Product code? | Artifact |
 | --- | --- | --- | --- |
-| 1 | **Plan** | No | `docs/<exercise-slug>/plan.md` |
+| 1 | **Plan** | No | `docs/<exercise-slug>/plan.md` (repo root) |
 | 2 | **Design** | No (docs/diagrams only) | `docs/<exercise-slug>/design.md` |
 | 3 | **Implement** | Yes | `coffee-shop-comparison/` (etc.) |
 | 4 | **Verify** | Fixes only | `docs/<exercise-slug>/verify.md` |
 
-Templates: [`docs/_templates/`](./docs/_templates/).
+Templates: [`docs/_templates/`](../../docs/_templates/).
 
 **Trivial exceptions:** typos, comment-only edits, one-line obvious fixes, or user says “skip phases.” When in doubt, start at Plan.
 
@@ -72,14 +72,14 @@ Between gates, ask explicitly (e.g. “Approve Plan to move to Design?”).
 
 - Active partner: clarify incomplete requirements; challenge risky scope.
 - Keep context lean; read files needed for the current phase only.
-- Plan, Design, Verify live under **`day-1/docs/`** — update [`docs/README.md`](./docs/README.md) when adding an exercise slug.
+- Plan, Design, Verify live under **repository-root `docs/`** — update [`docs/README.md`](../../docs/README.md) when adding an exercise slug.
 - No destructive git, secrets, or new dependencies without explicit approval.
 
 ## Important paths (Day 1)
 
 | Path | Purpose |
 | --- | --- |
-| `docs/README.md` | Doc index for this day |
+| `docs/README.md` (repo root) | Doc index |
 | `docs/coffee-shop-comparison/` | Plan, design, verify for the lab |
 | `coffee-shop-comparison/app.py` | Flask server (serves UI + embedded shop JSON) |
 | `coffee-shop-comparison/data.py` | CSV load, aggregate, filter helpers |
@@ -90,6 +90,7 @@ Between gates, ask explicitly (e.g. “Approve Plan to move to Design?”).
 ## Run and verify
 
 ```bash
+# From repository root (once): python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
 cd coffee-shop-comparison
 ./run.sh
 # http://127.0.0.1:8501/
@@ -118,11 +119,11 @@ Do not invent commands; use the lab README and existing scripts.
 
 ## Self‑improvement
 
-Durable lessons from corrections → add a bullet here or in [`docs/agent-lessons.md`](./docs/agent-lessons.md).
+Durable lessons from corrections → add a bullet here or in [`docs/agent-lessons.md`](../../docs/agent-lessons.md).
 
-- **Verify ≠ data-only tests:** Streamlit/UI labs need interaction checks (filters, widgets, session state). Do not sign off `verify.md` with unchecked manual steps ([coffee-shop-comparison verify gap](./docs/coffee-shop-comparison/verify.md#why-the-selectbox-crash-was-missed-first-pass)).
-- **Do not self-certify manual UI:** Marking manual checks `[x]` without running `./run.sh` and using compare dropdowns (or user confirmation) repeats the same gap — see [second pass gap](./docs/coffee-shop-comparison/verify.md#second-pass-still-not-real-ui-verify).
+- **Verify ≠ data-only tests:** Streamlit/UI labs need interaction checks (filters, widgets, session state). Do not sign off `verify.md` with unchecked manual steps ([coffee-shop-comparison verify gap](../../docs/coffee-shop-comparison/verify.md#why-dropdown-crashes-kept-happening-streamlit)).
+- **Do not self-certify manual UI:** Marking manual checks `[x]` without running `./run.sh` and using compare dropdowns (or user confirmation) repeats the same gap — see verify doc manual checks section.
 
 ## Default mode
 
-**Phase 1 (Plan)** for new features or lab extensions. Reference implementation docs: [`docs/coffee-shop-comparison/plan.md`](./docs/coffee-shop-comparison/plan.md).
+**Phase 1 (Plan)** for new features or lab extensions. Reference implementation docs: [`docs/coffee-shop-comparison/plan.md`](../../docs/coffee-shop-comparison/plan.md).

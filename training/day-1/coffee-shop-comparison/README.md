@@ -4,15 +4,18 @@
 
 **Why not Streamlit:** dynamic compare dropdowns + filters fight Streamlit’s widget session state; this stack keeps Python for data and plain HTML `<select>` for stable UI.
 
-**Docs:** [plan](../docs/coffee-shop-comparison/plan.md) · [design](../docs/coffee-shop-comparison/design.md) · [verify](../docs/coffee-shop-comparison/verify.md)
+**Docs:** [plan](../../../docs/coffee-shop-comparison/plan.md) · [design](../../../docs/coffee-shop-comparison/design.md) · [verify](../../../docs/coffee-shop-comparison/verify.md)
 
 ## Run
 
+From the **repository root**, create the shared virtual environment once:
+
 ```bash
-cd training/day-1/coffee-shop-comparison
+cd /path/to/ai-native
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+cd training/day-1/coffee-shop-comparison
 ./run.sh
 # open http://127.0.0.1:8501/
 ```
@@ -26,10 +29,11 @@ coffee-shop-comparison/
 ├── templates/index.html
 ├── static/app.js
 ├── static/styles.css
-├── requirements.txt
 ├── run.sh
 └── coffee_shop_reviews.csv
 ```
+
+Python dependencies are declared in the repository root [`requirements.txt`](../../../requirements.txt).
 
 ## Gold features
 

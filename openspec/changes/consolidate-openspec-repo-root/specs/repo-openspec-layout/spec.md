@@ -25,12 +25,12 @@ OpenSpec workflow commands and skills (`opsx-*` commands and `openspec-*` skills
 
 ### Requirement: Day 1 phased docs remain the lab planning source
 
-Day 1 coffee-shop work MUST continue to use plan, design, implement, and verify artifacts under `training/day-1/docs/` as defined in `training/day-1/AGENTS.md`. Consolidating OpenSpec MUST NOT require Day 1 labs to create OpenSpec changes for the warm-up exercise.
+Day 1 coffee-shop work MUST continue to use plan, design, implement, and verify artifacts under repository-root `docs/` as defined in `training/day-1/AGENTS.md`. Consolidating OpenSpec MUST NOT require Day 1 labs to create OpenSpec changes for the warm-up exercise.
 
 #### Scenario: Day 1 agent instructions unchanged in intent
 
 - **WHEN** an agent reads `training/day-1/AGENTS.md` after this change
-- **THEN** the phased workflow gates and paths under `day-1/docs/` MUST still be documented as the source of truth for Day 1 planning and verification
+- **THEN** the phased workflow gates and paths under repository-root `docs/` MUST still be documented as the source of truth for Day 1 planning and verification
 
 ### Requirement: Training docs state repo-root OpenSpec expectations
 

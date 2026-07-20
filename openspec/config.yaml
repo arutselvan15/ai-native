@@ -3,7 +3,8 @@ schema: spec-driven
 context: |
   Repository: ai-native — hands-on training for AI-native engineering (agents, specs, skills, harnesses).
   OpenSpec: exactly one root at repo openspec/; no nested openspec/ under training/ labs.
-  Day 1 warm-up uses training/day-1/docs/ phased docs, not OpenSpec changes.
+  Day 1 warm-up uses repository-root docs/ phased docs, not OpenSpec changes.
+  Python labs share one .venv and requirements.txt at the repository root.
   Day 2+ capstone: spec-driven changes under openspec/changes/; specs use GIVEN / WHEN / THEN scenarios where applicable.
   Keep proposals scoped; include explicit non-goals for workshop-sized slices.
 

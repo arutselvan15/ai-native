@@ -12,4 +12,4 @@ Hands-on material lives under [`training/`](training/). Each day is a self-conta
 | Day 4 | MVP harness blueprint and baseline assessment | [`training/day-4/assemble-harness-blueprint/README.md`](training/day-4/assemble-harness-blueprint/README.md) |
 | Day 5 | Repo legibility, deterministic checks, evidence package | [`training/day-5/hands-on-validation/README.md`](training/day-5/hands-on-validation/README.md) |
 
-**Suggested path:** begin with [Day 1](training/day-1/README.md)—follow [`training/day-1/AGENTS.md`](training/day-1/AGENTS.md) and [`training/day-1/docs/`](training/day-1/docs/README.md) for plan → design → implement → verify.
+**Suggested path:** begin with [Day 1](training/day-1/README.md)—follow [`training/day-1/AGENTS.md`](training/day-1/AGENTS.md) and [`docs/`](docs/README.md) (repository root) for plan → design → implement → verify. Create the shared Python environment once at the repo root (`python3 -m venv .venv`, then `pip install -r requirements.txt`).

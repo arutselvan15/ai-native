@@ -2,7 +2,7 @@
 
 The ai-native repo is a learning monorepo: repo-root harness (AGENTS.md, OpenSpec, opsx skills) plus independent `training/day-*` exercises. OpenSpec was initialized at the repo root and again inside `training/day-1/coffee-shop-comparison/`, including duplicate `.cursor` and `.github` opsx scaffolding (currently untracked). The CLI’s nearest-root resolution causes `openspec list` from the lab to bind to the nested root, while Day 2 capstone material assumes OpenSpec at the repository root.
 
-Day 1 already uses a separate phased-doc workflow under `training/day-1/docs/` and does not require OpenSpec for the warm-up lab.
+Day 1 already uses a separate phased-doc workflow under repository-root `docs/` and does not require OpenSpec for the warm-up lab.
 
 ## Goals / Non-Goals
 
