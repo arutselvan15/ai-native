@@ -1,0 +1,21 @@
+openspec/specs/repo-openspec-layout/spec.md
+  s_1f530e6ca69a86::t_0be88a731eef3c 1-51
+openspec/specs/repo-dev-layout/spec.md
+  s_1f530e6ca69a86::t_0be88a731eef3c 1-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "78e39c33a2f966625c0e8555bf833284893edd9a",
+  "prompts": {},
+  "sessions": {
+    "s_1f530e6ca69a86": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d123747e-5cf8-49d4-b91c-c881f249461a",
+        "model": "default"
+      },
+      "human_author": "arutselvan15 <arut.selvan15@gmail.com>"
+    }
+  }
+}
