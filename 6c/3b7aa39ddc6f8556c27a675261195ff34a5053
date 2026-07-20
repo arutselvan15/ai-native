@@ -1,0 +1,19 @@
+openspec/changes/root-level-venv-and-docs/.openspec.yaml
+  s_1f530e6ca69a86::t_757fc99495b0b5 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "6c3b7aa39ddc6f8556c27a675261195ff34a5053",
+  "prompts": {},
+  "sessions": {
+    "s_1f530e6ca69a86": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d123747e-5cf8-49d4-b91c-c881f249461a",
+        "model": "default"
+      },
+      "human_author": "arutselvan15 <arut.selvan15@gmail.com>"
+    }
+  }
+}
