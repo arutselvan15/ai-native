@@ -1,0 +1,4 @@
+from tools.repo_scanner.cli import main
+
+if __name__ == "__main__":
+    raise SystemExit(main())

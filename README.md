@@ -13,3 +13,5 @@ Hands-on material lives under [`training/`](training/). Each day is a self-conta
 | Day 5 | Repo legibility, deterministic checks, evidence package | [`training/day-5/hands-on-validation/README.md`](training/day-5/hands-on-validation/README.md) |
 
 **Suggested path:** begin with [Day 1](training/day-1/README.md)—follow [`training/day-1/AGENTS.md`](training/day-1/AGENTS.md) and [`docs/`](docs/README.md) (repository root) for plan → design → implement → verify. Create the shared Python environment once at the repo root (`python3 -m venv .venv`, then `pip install -r requirements.txt`).
+
+**Repo scanner (Day 2 capstone):** from repo root, `python -m tools.repo_scanner` — see [`tools/repo_scanner/README.md`](tools/repo_scanner/README.md).
