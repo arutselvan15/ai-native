@@ -1,0 +1,15 @@
+schema: spec-driven
+
+context: |
+  Repository: ai-native — hands-on training for AI-native engineering (agents, specs, skills, harnesses).
+  OpenSpec: exactly one root at repo openspec/; no nested openspec/ under training/ labs.
+  Day 1 warm-up uses training/day-1/docs/ phased docs, not OpenSpec changes.
+  Day 2+ capstone: spec-driven changes under openspec/changes/; specs use GIVEN / WHEN / THEN scenarios where applicable.
+  Keep proposals scoped; include explicit non-goals for workshop-sized slices.
+
+# Per-artifact rules (optional)
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section

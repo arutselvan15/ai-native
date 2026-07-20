@@ -82,6 +82,10 @@ If you are using the default code scanner, paste or summarize `examples/code-sca
 
 You are ready to move on when you can state, in a few sentences: the user, the problem, the smallest useful slice, and what is explicitly out of scope.
 
+## Workspace and OpenSpec root
+
+Open this repository at the **ai-native root** in Cursor (not only a subfolder such as `training/day-2/` or the Day 1 lab). OpenSpec changes, `/opsx:*` commands, and the `openspec` CLI all use the single planning home at **`openspec/`** on the repo root. Training labs must not contain a nested `openspec/` directory.
+
 ## What OpenSpec Should Produce
 
 For this exercise, use OpenSpec to create three linked artifacts:

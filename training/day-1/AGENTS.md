@@ -11,6 +11,8 @@ Day 1 warm-up: build a web app that loads `coffee_shop_reviews.csv` and compares
 - Default workspace: **`training/day-1/`** only (code under `coffee-shop-comparison/`, artifacts under `docs/`).
 - Do not change other days under `training/` or repo root files unless the user explicitly asks.
 
+**OpenSpec:** Day 1 does not use OpenSpec changes for this lab. Planning artifacts stay under `docs/`. Repo-wide OpenSpec (Day 2+ capstone) lives only at the **repository root** `openspec/`—there is no OpenSpec root under `coffee-shop-comparison/`.
+
 ## Non‑negotiable: phased workflow
 
 | Phase | Name | Product code? | Artifact |

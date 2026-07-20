@@ -20,6 +20,13 @@ Human overview and links: [`../README.md`](../README.md).
 
 Do not mix day-level rules or doc paths across days.
 
+## OpenSpec (repo root only)
+
+OpenSpec lives at **`openspec/`** on the **ai-native repository root**, with opsx commands and skills under repo-root `.cursor/` and `.github/`. Do **not** run `openspec init` or add nested `openspec/` directories under `training/` labs—that breaks CLI “nearest root” resolution.
+
+- **Day 1:** phased plan/design/verify under `day-1/docs/` only (no OpenSpec changes for the warm-up lab).
+- **Day 2+ capstone:** create and apply changes under repo-root `openspec/changes/`. Open the Cursor workspace at the **repository root** so `/opsx:*` and the `openspec` CLI use the same planning home.
+
 ## Layout
 
 ```text
